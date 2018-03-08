@@ -50,10 +50,11 @@ Create user model & write methods for authentication:
 
 ## Controller
 Create `UsersController` and `SessionsController`.
+Add methods in `ApplicationsController`.
 
 ## Routes
 Add routes in the routes.rb file.
-``
+```
     session POST   /session(.:format)                     sessions#create
             DELETE /session(.:format)                     sessions#destroy
 new_session GET    /session/new(.:format)                 sessions#new
