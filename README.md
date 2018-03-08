@@ -5,6 +5,7 @@
 $ rails new music_app --database=postgresql
 
 2. Under Gemfile, add gems to development group:
+```
 # Run 'bundle exec annotate' in Terminal to add helpful comments to models.
 gem 'annotate'
 
@@ -18,6 +19,7 @@ gem 'byebug'
 
 # pry > irb
 gem 'pry-rails'
+```
 
 3. install gems:
 $ bundle install
@@ -29,10 +31,12 @@ $ rails g migration CreateUsers
 
 In the users table, add fields: email, password_digest and session_token. Add index to email and session_token to speed up the lookup, and ensure uniqueness.
 
+```
 $ rails db:create
 Created database 'music_app_development'
 Created database 'music_app_test'
 $ rails db:migrate
+```
 
 Check schema.rb
 
