@@ -1,3 +1,4 @@
 class Band < ActiveRecord
-  validates :name, presence: true
+  validates :name, :user_id, presence: true
+  belongs_to :user
 end

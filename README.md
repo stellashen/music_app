@@ -90,3 +90,13 @@ band      GET    /bands/:id(.:format)                   bands#show
 ```
 Check what routes we have now:
 $ rails routes
+
+### Controller
+Implement CRUD functionality.
+
+### Users can add new bands to the website
+$ rails g migration AddColumnToBands
+add user_id to bands table
+$ rails db:migrate
+add validation under band model
+add associations under User and Band models

@@ -1,6 +1,8 @@
 class User < ActiveRecord
   attr_reader :password
 
+  has_many :bands
+
   after_initialize :ensure_session_token
 
   validates :password_digest, presence: true
