@@ -24,7 +24,8 @@ gem 'pry-rails'
 3. install gems:
 $ bundle install
 
-## Migration
+## Users
+### Migration
 Create users table:
 
 $ rails g migration CreateUsers
@@ -40,7 +41,7 @@ $ rails db:migrate
 
 Check schema.rb
 
-## Model
+### Model
 Create user model & write methods for authentication:
 1. add validations
 2. Write methods to deal with the session token: `User::generate_session_token`,  `User#reset_session_token!` and `User#ensure_session_token`.
@@ -48,11 +49,11 @@ Create user model & write methods for authentication:
 4. use an `after_initialize` callback to set the session_token before validation if it's not present. ("The after_initialize callback will be called whenever an Active Record object is instantiated, either by directly using new or when a record is loaded from the database." - From Docs)
 5. Write a `User::find_by_credentials(email, password)` method.
 
-## Controller
+### Controller
 Create `UsersController` and `SessionsController`.
 Add methods in `ApplicationsController`.
 
-## Routes
+### Routes
 Add routes in the routes.rb file.
 ```
     session POST   /session(.:format)                     sessions#create
@@ -62,3 +63,30 @@ new_session GET    /session/new(.:format)                 sessions#new
    new_user GET    /users/new(.:format)                   users#new
        user GET    /users/:id(.:format)                   users#show
 ```
+
+## Bands
+### Migration and Model
+$ rails g migration CreateBands
+
+Add name field to bands table.
+
+$ rails db:migrate
+
+Add validation to Band model.
+
+Add routes
+
+### Routes
+Add bands routes. Set root to /bands.
+```
+bands     GET    /bands(.:format)                       bands#index
+          POST   /bands(.:format)                       bands#create
+new_band  GET    /bands/new(.:format)                   bands#new
+edit_band GET    /bands/:id/edit(.:format)              bands#edit
+band      GET    /bands/:id(.:format)                   bands#show
+          PATCH  /bands/:id(.:format)                   bands#update
+          PUT    /bands/:id(.:format)                   bands#update
+          DELETE /bands/:id(.:format)                   bands#destroy
+```
+Check what routes we have now:
+$ rails routes
