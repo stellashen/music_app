@@ -1,0 +1,21 @@
+<h1>Sign in</h1>
+
+<%= render "shared/errors" %>
+
+<form action="<%= session_url %>" method="post">
+  <%= auth_token %>
+
+  <label for="user_email">User Email</label>
+  <input type="text" name="user[email]" id="user_email">
+  <br>
+
+  <label for="user_password">Password</label>
+  <input type="password" name="user[password]" id="user_password">
+  <br>
+
+  <input type="submit">
+</form>
+
+<% content_for :footer do %>
+   This is the login page.
+<% end %>

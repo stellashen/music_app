@@ -96,7 +96,18 @@ Implement CRUD functionality.
 
 ### Users can add new bands to the website
 $ rails g migration AddColumnToBands
+
 add user_id to bands table
+
 $ rails db:migrate
+
 add validation under band model
+
 add associations under User and Band models
+
+## Views
+### users#new view
+### bands#index view
+### bands#show view
+### bands#new view
+### bands#edit view

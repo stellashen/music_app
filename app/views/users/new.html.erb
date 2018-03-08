@@ -1,1 +1,27 @@
-<p>Hi! You are logged in as <%=  current.user %></p>
+<h1>New User</h1>
+
+<%= render "shared/errors" %>
+
+<form action="<%= users_url %>" method="post">
+  <%= auth_token %>
+
+  <label for="user_email">User Email</label>
+  <input type="text"
+         name="user[email]"
+         id="user_email"
+         value="<%= @user.email %>">
+  <br>
+
+  <label for="user_password">Password</label>
+  <input type="password"
+         name="user[password]"
+         id="user_password"
+         value="<%= @user.password %>">
+  <br>
+
+  <input type="submit">
+</form>
+
+<% content_for :footer do %>
+  Sign up and have fun!
+<% end %>

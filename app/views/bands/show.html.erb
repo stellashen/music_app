@@ -1,0 +1,9 @@
+<h1><%= @band.name %></h1>
+
+<% if @band.user == current_user %>
+  <%= link_to "Edit #{@band.name}", edit_band_url(@band) %>
+<% end %>
+
+<% content_for :footer do %>
+  This is the show page for <%= @band.name %>.
+<% end %>

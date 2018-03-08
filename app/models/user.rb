@@ -1,4 +1,4 @@
-class User < ActiveRecord
+class User < ApplicationRecord
   attr_reader :password
 
   has_many :bands
@@ -13,8 +13,8 @@ class User < ActiveRecord
   validates :session_token, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
 
     return nil if user.nil?
     user.is_password?(password) ? user : nil

@@ -9,6 +9,25 @@
   </head>
 
   <body>
+    <% if current_user.nil? %>
+      <%= link_to "Sign in", new_session_url %> or
+      <%= link_to "Sign up", new_user_url %>
+    <% else %>
+      <%= current_user.email %>
+      <%= button_to "Logout", session_url, method: :delete %>
+    <% end %>
+
     <%= yield %>
   </body>
+
+  <footer>
+    <p>
+      Music App is a site that allows you to browse and add bands/albums/tracks that you love.
+    </p>
+
+    <p>
+      <%= yield :footer %>
+    </p>
+  </footer>
+
 </html>

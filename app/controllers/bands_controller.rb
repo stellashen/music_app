@@ -3,17 +3,17 @@ class BandsController < ApplicationController
   before_action :require_user!, only: [:new, :create, :edit, :update]
 
   def index
-    @bands = Cat.all
+    @bands = Band.all
     render :index
   end
 
   def show
-    @band = Cat.find(params[:id])
+    @band = Band.find(params[:id])
     render :show
   end
 
   def new
-    @band = Cat.new
+    @band = Band.new
     render :new
   end
 
