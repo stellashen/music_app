@@ -106,8 +106,65 @@ add validation under band model
 add associations under User and Band models
 
 ## Views
-### users#new view
-### bands#index view
-### bands#show view
-### bands#new view
-### bands#edit view
+Add basic views for users and bands.
+
+Some details:
+1. layouts
+
+User layouts/application.html.erb as the layout for every view.
+
+Add `yield: footer`.
+
+In helpers/application_helper.rb, write helper method auth_token.
+
+2. partial forms
+
+User partial form `bands/_form.html.erb` for edit and new views for bands.
+
+User partial form `shared/_errors.html.erb` for displaying flash errors.
+
+3. In gemfile, add:
+gem 'bcrypt'
+
+## Mailer
+New users will receive an email after signing up. (This function haven't been fully implemented. Now we'll just see a preview in browser.)
+```
+$ rails generate mailer UserMailer
+```
+Gemfile:
+```
+gem 'letter_opener'
+```
+config/environments/development.rb:
+```
+config.action_mailer.delivery_method = :letter_opener
+```
+users_controller.rb:
+```
+msg = UserMailer.welcome_email(@user)
+msg.deliver_now
+```
+app/mailers/user_mailer.rb
+```
+class UserMailer < ApplicationMailer
+  default from: 'notifications@example.com'
+
+  def welcome_email(user)
+    @user = user
+    @url  = 'localhost:3000/new/session'
+    mail(to: user.email, subject: 'Welcome to the Music App')
+  end
+end
+```
+Add email content in:
+app/views/user_mailer/welcome_email.html.erb
+app/views/user_mailer/welcome_email.txt.erb
+
+user_mailer_preview.rb
+```
+class UserMailerPreview < ActionMailer::Preview
+  def welcome_email
+    UserMailer.welcome_email(User.first)
+  end
+end
+```

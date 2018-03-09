@@ -59,6 +59,9 @@ group :development do
 
   # pry > irb
   gem 'pry-rails'
+  
+  # for the mailer
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
