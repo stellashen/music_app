@@ -157,7 +157,9 @@ class UserMailer < ApplicationMailer
 end
 ```
 Add email content in:
+
 app/views/user_mailer/welcome_email.html.erb
+
 app/views/user_mailer/welcome_email.txt.erb
 
 user_mailer_preview.rb
