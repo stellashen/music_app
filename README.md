@@ -170,3 +170,76 @@ class UserMailerPreview < ActionMailer::Preview
   end
 end
 ```
+
+## Testing Rails With RSpec and Capybara
+### Setting Up RSpec
+1. Add and install gems
+Add the following gems to the Gemfile:
+
+```ruby
+group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'faker'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+```
+Install gems:
+```
+$ bundle install
+```
+
+2. Install and configure RSpec
+```
+$ rails g rspec:install
+```
+
+Update the ``.rspec`` file to:
+```
+--color
+--require spec_helper
+--format documentation
+```
+
+3. Auto-generate test files
+Lastly, we will configure Rails to auto-generate starter files to test
+with RSpec, rather than the using the default TestUnit included in
+Rails.
+
+Open `config/application.rb` and add the following code inside the
+Application class:
+
+```ruby
+# my_app/config/application.rb
+
+config.generators do |g|
+  g.test_framework :rspec,
+    :fixtures => false,
+    :view_specs => false,
+    :helper_specs => false,
+    :routing_specs => false,
+    :controller_specs => true,
+    :request_specs => false
+end
+```
+You can probably guess what these settings do:
+
+ * `g.test_framework :rspec` tells Rails to use RSpec for testing.
+
+ * `:fixtures => false` means Rails should not generate fixtures for
+ each model. (Fixtures are the default Rails way of creating sample data
+ for tests.)
+
+ *  `xxxxx_specs => false` means that we won't auto-generate spec files
+for views, helpers, routes, or requests.  To start with, we
+will focus on testing our models, controllers and the user interface/API (feature specs). As you become more comfortable testing, you may want to change these settings and use tests for the other components, too.
+
+Manually create a directory for our feature specs, `spec/features`. This is a special
+directory; spec files within it will be given access to Capybara helper
+methods.
