@@ -1,4 +1,10 @@
 # Music App
+Setup
+Users
+Bands
+Views
+Mailer
+Testing Rails With RSpec and Capybara
 
 ## Setup
 1. create new project:
@@ -174,6 +180,7 @@ end
 ## Testing Rails With RSpec and Capybara
 ### Setting Up RSpec
 1. Add and install gems
+
 Add the following gems to the Gemfile:
 
 ```ruby
@@ -208,6 +215,7 @@ Update the ``.rspec`` file to:
 ```
 
 3. Auto-generate test files
+
 Lastly, we will configure Rails to auto-generate starter files to test
 with RSpec, rather than the using the default TestUnit included in
 Rails.
@@ -228,6 +236,7 @@ config.generators do |g|
     :request_specs => false
 end
 ```
+
 You can probably guess what these settings do:
 
  * `g.test_framework :rspec` tells Rails to use RSpec for testing.
