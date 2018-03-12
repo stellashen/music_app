@@ -36,7 +36,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
 
@@ -55,9 +54,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 
-  # Gotta have byebug...
-  gem 'byebug'
-
   # pry > irb
   gem 'pry-rails'
 
@@ -71,6 +67,7 @@ group :test do
   gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
