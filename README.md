@@ -243,4 +243,14 @@ Refer to [the docs][shoulda-matchers-docs] as needed.
 
 Also, write methods to test `#is_password?`, `#reset_session_token`, and `::find_by_credentials`.
 
+Create file ``spec/factories/users.rb``:
+```
+FactoryBot.define do
+  factory :user do
+    email { |n| Faker::Internet.email }
+    password { |p| Faker::Internet.password }
+  end
+end
+```
+
 Run the specs (`bundle exec rspec spec/models`) to check.
