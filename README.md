@@ -261,3 +261,9 @@ Run the specs (`bundle exec rspec spec/models`) to check.
 Run ``rails generate rspec:controller Users`` to generate a spec file for the UsersController.
 
 After writing the tests, run ``bundle exec rspec spec/controllers``
+
+### Integration Tests
+
+In the ``spec/features/`` folder, create a new file called ``auth_spec.rb``.
+
+After writing the tests, run ``bundle exec rspec spec/features``
