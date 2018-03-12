@@ -191,7 +191,7 @@ Follow the instructions for setting up [RSpec-Rails][rspec-rails], [Shoulda Matc
   # Gemfile
 
   group :test do
-    gem 'factory_bot_rails', :require => false
+    gem 'factory_bot_rails'
     gem 'faker'
     gem 'capybara'
     gem 'launchy'
@@ -205,7 +205,7 @@ Follow the instructions for setting up [RSpec-Rails][rspec-rails], [Shoulda Matc
 
   test:
     adapter: postgresql
-    database: music_db_test
+    database: music_app_test
     pool: 5
     timeout: 5000
 ```
@@ -216,3 +216,31 @@ Follow the instructions for setting up [RSpec-Rails][rspec-rails], [Shoulda Matc
   # Configure default mail server
   Rails.application.routes.default_url_options[:host] = 'domain.com'
 ```
+
+```ruby
+  # rails_helper.rb
+  require 'shoulda/matchers'
+  # put the following code under: RSpec.configure do |config|
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+```
+
+
+
+### Model Tests
+Run `rails generate rspec:model User` to generate a spec file for the `User` model.
+
+Use Should Matchers to validate:
+* Presence of `email`
+* Presence of `password_digest`
+* Length of `password` > 6
+
+Refer to [the docs][shoulda-matchers-docs] as needed.
+
+Also, write methods to test `#is_password?`, `#reset_session_token`, and `::find_by_credentials`.
+
+Run the specs (`bundle exec rspec spec/models`) to check.
