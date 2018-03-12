@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       login_user!(@user)
       msg = UserMailer.welcome_email(@user)
       msg.deliver_now
-      redirect_to bands_url
+      redirect_to new_session_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

@@ -1,16 +1,16 @@
 # Music App
 
-##Setup
+Setup
 
-## Users
+Users
 
-## Bands
+Bands
 
-## Views
+Views
 
-## Mailer
+Mailer
 
-## Testing Rails With RSpec and Capybara
+Testing Rails With RSpec and Capybara
 
 ## Setup
 1. create new project:
@@ -185,6 +185,8 @@ end
 
 ## Testing Rails With RSpec and Capybara
 
+### Set up
+
 Follow the instructions for setting up [RSpec-Rails][rspec-rails], [Shoulda Matchers][shoulda-matchers-docs], and [Capybara][capybara].
 
 ```ruby
@@ -229,9 +231,8 @@ Follow the instructions for setting up [RSpec-Rails][rspec-rails], [Shoulda Matc
   end
 ```
 
-
-
 ### Model Tests
+
 Run `rails generate rspec:model User` to generate a spec file for the `User` model.
 
 Use Should Matchers to validate:
@@ -254,3 +255,9 @@ end
 ```
 
 Run the specs (`bundle exec rspec spec/models`) to check.
+
+### Controller Tests
+
+Run ``rails generate rspec:controller Users`` to generate a spec file for the UsersController.
+
+After writing the tests, run ``bundle exec rspec spec/controllers``
